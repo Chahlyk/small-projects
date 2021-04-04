@@ -55,6 +55,10 @@ nav {
     font-size: 14px;
 }
 
+.liLast {
+    border-right: none!important;
+}
+
 a {
     text-decoration-line: none;
 }
