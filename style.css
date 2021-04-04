@@ -55,8 +55,8 @@ nav {
     font-size: 14px;
 }
 
-.liLast {
-    border-right: none!important;
+ul :last-child div {
+    border-right: none;
 }
 
 a {
