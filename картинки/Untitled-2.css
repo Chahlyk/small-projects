@@ -1,0 +1,19 @@
+#gallery {
+    display: flex;
+}
+
+.imgDiv {
+    display: flex;
+    flex: 1;
+}
+
+img {
+    border-radius: 5px;
+    display: flex;
+    flex: 10;
+}
+
+.active {
+    width: 800px;
+    height: 500px;
+}
