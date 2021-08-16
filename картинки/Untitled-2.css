@@ -5,6 +5,7 @@
 .imgDiv {
     display: flex;
     flex: 1;
+    position: relative;
 }
 
 img {
@@ -17,3 +18,7 @@ img {
     width: 800px;
     height: 500px;
 }
+
+span {
+    position: absolute;
+}    
