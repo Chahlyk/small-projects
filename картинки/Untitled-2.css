@@ -1,3 +1,12 @@
+* {
+    font: bold 24px Arial, sans-serif;
+    color: white; 
+}
+
+body {
+    background-color: cornsilk;
+}
+
 #gallery {
     display: flex;
 }
@@ -6,6 +15,7 @@
     display: flex;
     flex: 1;
     position: relative;
+    padding: 10px;
 }
 
 img {
@@ -21,4 +31,6 @@ img {
 
 span {
     position: absolute;
+    top: 450px;
+    margin: 10px;
 }    
