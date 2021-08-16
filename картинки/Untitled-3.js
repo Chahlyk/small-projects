@@ -41,7 +41,13 @@ images.forEach(function(pic) {
       };
 });
 
+let selected;
+
 function showImage(img) {
-    img.classList.add = 'active';
+    if (selected) { 
+        selected.classList.remove('active');
+    }
+    selected = img;
+    selected.classList.add('active'); 
 }
 
