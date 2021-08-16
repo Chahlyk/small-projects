@@ -22,11 +22,12 @@ img {
     border-radius: 5px;
     display: flex;
     flex: 10;
+    height: 500px;
 }
 
 .active {
     width: 800px;
-    height: 500px;
+    transition: 1s;
 }
 
 span {
