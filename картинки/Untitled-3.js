@@ -44,11 +44,11 @@ images.forEach(function(pic) {
 
 let selected;
 
-function showImage(img) {
+function showImage(a) {
     if (selected) { 
         selected.classList.remove('active');
     }
-    selected = img;
+    selected = a;
     selected.classList.add('active'); 
 }
 
