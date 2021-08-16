@@ -29,6 +29,7 @@ images.forEach(function(pic) {
     let imgDiv = document.createElement('div'),
         img = document.createElement('img');
     img.setAttribute('src', `${pic.imageUrl}`);
+    imgDiv.insertAdjacentHTML('afterbegin', `<span>${pic.title}</span>`);
     imgDiv.className = 'imgDiv';
     imgDiv.append(img);
     gallery.append(imgDiv);
