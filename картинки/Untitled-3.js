@@ -23,32 +23,30 @@ const images = [
     }
 ];
 
-let gallery = document.getElementById('gallery');
+const gallery = document.getElementById('gallery');
 
 images.forEach(function(pic) {
-    let imgDiv = document.createElement('div'),
-        img = document.createElement('img');
-    img.setAttribute('src', `${pic.imageUrl}`);
-    imgDiv.insertAdjacentHTML('afterbegin', `<span>${pic.title}</span>`);
+    let imgDiv = document.createElement('div');
+    imgDiv.style.backgroundImage = `url(${pic.imageUrl})`;
+    imgDiv.insertAdjacentHTML('afterbegin', `<span>${pic.title}</span>`);  
     imgDiv.className = 'imgDiv';
-    imgDiv.append(img);
     gallery.append(imgDiv);
-    gallery.onclick = function(event) {
-        let target = event.target;
-      
-        if (target.tagName != 'IMG') return;
-      
-        showImage(target);
-      };
+    gallery.addEventListener('click', function(event) {
+            let target = event.target;
+
+            if (target.className != 'imgDiv') return;
+
+            showImage(target);
+    });
 });
 
 let selected;
 
 function showImage(a) {
-    if (selected) { 
+    if (selected) {
         selected.classList.remove('active');
     }
     selected = a;
-    selected.classList.add('active'); 
-}
+    selected.classList.add('active');
+};
 
