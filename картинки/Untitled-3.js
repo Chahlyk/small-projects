@@ -28,25 +28,30 @@ const gallery = document.getElementById('gallery');
 images.forEach(function(pic) {
     let imgDiv = document.createElement('div');
     imgDiv.style.backgroundImage = `url(${pic.imageUrl})`;
-    imgDiv.insertAdjacentHTML('afterbegin', `<span>${pic.title}</span>`);  
+    imgDiv.insertAdjacentHTML('afterbegin', `<span>${pic.title}</span>`);
     imgDiv.className = 'imgDiv';
     gallery.append(imgDiv);
-    gallery.addEventListener('click', function(event) {
-            let target = event.target;
-
-            if (target.className != 'imgDiv') return;
-
-            showImage(target);
+    imgDiv.addEventListener('click', event => {
+        clear();
+        imgDiv.classList.add('active');
     });
 });
+defaultClass();
 
-let selected;
+let imgDiv = document.querySelectorAll('.imgDiv');
 
-function showImage(a) {
-    if (selected) {
-        selected.classList.remove('active');
+function  clear() {
+    imgDiv.classList.remove('active');
+}
+
+function defaultClass() {
+    if (images.length === 1) {
+        imgDiv[0].classList.add('active');
+    } else if (images.length === 0) {
+        imgDiv.classList.remove('active');
+    } else {
+        let middle = Math.floor(imgDiv.length / 2),
+            value = imgDiv[middle];
+        value.classList.add('active');
     }
-    selected = a;
-    selected.classList.add('active');
-};
-
+}
