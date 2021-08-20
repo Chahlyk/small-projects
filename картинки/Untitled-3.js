@@ -36,22 +36,23 @@ images.forEach(function(pic) {
         imgDiv.classList.add('active');
     });
 });
-defaultClass();
 
-let imgDiv = document.querySelectorAll('.imgDiv');
+let imgDivs = document.querySelectorAll('.imgDiv');
 
 function  clear() {
-    imgDiv.classList.remove('active');
+    imgDivs.forEach((item) => {
+        item.classList.remove('active');
+    })
 }
 
-function defaultClass() {
+(function() {
     if (images.length === 1) {
-        imgDiv[0].classList.add('active');
+        images[0].classList.add('active');
     } else if (images.length === 0) {
-        imgDiv.classList.remove('active');
+         return imgDivs;
     } else {
-        let middle = Math.floor(imgDiv.length / 2),
-            value = imgDiv[middle];
+        let middle = Math.floor(images.length / 2),
+            value = imgDivs[middle];
         value.classList.add('active');
     }
-}
+})();
