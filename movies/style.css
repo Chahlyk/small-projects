@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #f2f3f4;
+}
+
+.header {
+    background-color: #45545e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 20px 30px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.moon {
+    height: 35px;
+    width: 40px;
+}
+
+.myAcc {
+    width: 100px;
+    height: 30px;
+    background-color: #45545e;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.releases {
+    margin: 30px 0 0 30px;
+    color: gray;
+    font-size: larger;
+}
+
+#mainContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.poster {
+    height: 250px;
+    width: 200px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.tooltip {
+    position: fixed;
+    padding: 10px 20px;
+    border: 1px solid #b3c9ce;
+    border-radius: 4px;
+    text-align: center;
+    background: #f2f3f4;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+.info {
+    width: 500px;
+    height: 700px;
+    border: 1px solid black;
+    display: none;
+    position: absolute;
+}
