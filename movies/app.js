@@ -12,8 +12,8 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
             info = document.createElement('div');
         info.className = 'info';
         poster.className = 'poster';
-        info.style.backgroundImage = `url()`;
-        poster.style.backgroundImage = `url()`;
+        info.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342 + ${film.backdrop_path})`;
+        poster.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342 + ${film.poster_path})`;
         poster.setAttribute('data-tooltip', `${film.title}`);
         let tooltipElem;
         document.addEventListener('mouseover', event => {
@@ -63,8 +63,3 @@ function hide(elem) {
 function showInfo(elem) {
     elem.style.display = 'block';
 }
-
-
-
-
-
