@@ -1,7 +1,8 @@
 'use strict'
 
 let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c',
-    main = document.getElementById('mainContent');
+    main = document.getElementById('mainContent'),
+    infoSize = document.getElementById('infoSize');
 
 (async function() {
     let response = await fetch(url),
@@ -9,12 +10,30 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
 
     for (let film of commits.results) {
         let poster = document.createElement('div'),
-            info = document.createElement('div');
+            info = document.createElement('div'),
+            innerInfo = document.createElement('div'),
+            innerInfoText = document.createElement('div'),
+            infoPoster = document.createElement('div'),
+            backToList = document.createElement('div');
         info.className = 'info';
         poster.className = 'poster';
-        info.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342 + ${film.backdrop_path})`;
-        poster.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342 + ${film.poster_path})`;
+        innerInfo.className = 'innerInfo';
+        infoPoster.className = 'infoPoster';
+        backToList.className = 'backToList';
+        innerInfoText.className = 'innerInfoText';
+        backToList.insertAdjacentHTML('afterbegin', '<p class="buttonBack">⇦   Back to list</p>');
+        innerInfoText.insertAdjacentHTML('afterbegin', `<p class="overview">${film.overview}</p>`);
+        innerInfoText.insertAdjacentHTML('afterbegin', `<ul class="ul">
+        <li class="vote">Score: ${film.vote_average}</li>
+        <li class="rating">Rating: ${film.adult}</li>
+        <li class="releaseDate">Release Date: ${film.release_date}</li>
+        </ul>`);
+        innerInfoText.insertAdjacentHTML('afterbegin', `<p class="innerTitle">${film.title}</p>`);
+        infoPoster.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342${film.poster_path})`;
+        info.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342${film.backdrop_path})`;
+        poster.style.backgroundImage = `url(http://image.tmdb.org/t/p/w342${film.poster_path})`;
         poster.setAttribute('data-tooltip', `${film.title}`);
+
         let tooltipElem;
         document.addEventListener('mouseover', event => {
             let target = event.target,
@@ -28,14 +47,8 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
             document.body.append(tooltipElem);
 
             let coords = target.getBoundingClientRect(),
-                left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-
-            if (left < 0) left = 0;
-
-            let top = coords.top - tooltipElem.offsetHeight - 5;
-            if (top < 0) {
-                top = coords.top + target.offsetHeight + 5;
-            }
+                left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2,
+                top = coords.top + (poster.offsetHeight / 2);
 
             tooltipElem.style.left = left + 'px';
             tooltipElem.style.top = top + 'px';
@@ -44,9 +57,20 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
         document.addEventListener('mouseout', event => {
             hide(tooltipElem);
         });
+
         poster.addEventListener('click', event => {
-            showInfo(info);
+            info.style.display = 'block';
+        });
+
+        backToList.addEventListener('click', event => {
+            info.style.display = 'none';
         })
+
+        innerInfo.append(infoPoster);
+        innerInfo.append(innerInfoText);
+        info.append(backToList);
+        info.append(innerInfo);
+        main.append(info);
         main.append(poster);
         console.log(film);
     }
@@ -58,8 +82,4 @@ function hide(elem) {
         elem.remove();
         elem = null;
     }
-}
-
-function showInfo(elem) {
-    elem.style.display = 'block';
 }
