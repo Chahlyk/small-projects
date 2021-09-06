@@ -54,7 +54,10 @@ body {
     height: 250px;
     width: 200px;
     border: 1px solid black;
+    border-radius: 5px;
     margin: 10px;
+    background: center;
+    background-size: cover;
 }
 
 .tooltip {
@@ -68,8 +71,73 @@ body {
 }
 
 .info {
-    width: 500px;
-    height: 700px;
-    border: 1px solid black;
+    position: fixed;
+    top: 75px;
+    width: 100%;
+    height: 100%;
     display: none;
+    background: center;
+    background-size: cover;
+}
+
+.innerInfo {
+    width: 900px;
+    color: white;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    backdrop-filter: blur(4px);
+}
+
+.infoPoster {
+    width: 300px;
+    height: 350px;
+    background: center;
+    background-size: cover;
+}
+
+.innerInfoText {
+    font-size: 16px;
+    width: 500px;
+}
+
+.overview {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 15px 0;
+    margin: 40px 0 0 0;
+}
+
+.vote {
+    padding-right: 15px;
+}
+
+.rating {
+    border-left: 1px solid white;
+    padding: 0 15px;
+}
+
+.releaseDate {
+    border-left: 1px solid white;
+    padding: 0 15px;
+}
+
+.innerTitle {
+    font-size: 24px;
+    padding-bottom: 15px;
+}
+
+.buttonBack {
+    color: white;
+    cursor: pointer;
+    margin: 30px;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
 }
