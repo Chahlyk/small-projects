@@ -14,7 +14,9 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
             innerInfo = document.createElement('div'),
             innerInfoText = document.createElement('div'),
             infoPoster = document.createElement('div'),
-            backToList = document.createElement('div');
+            backToList = document.createElement('div'),
+            infoBlur = document.createElement('div');
+        infoBlur.className = 'infoBlur';
         info.className = 'info';
         poster.className = 'poster';
         innerInfo.className = 'innerInfo';
@@ -25,7 +27,7 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
         innerInfoText.insertAdjacentHTML('afterbegin', `<p class="overview">${film.overview}</p>`);
         innerInfoText.insertAdjacentHTML('afterbegin', `<ul class="ul">
         <li class="vote">Score: ${film.vote_average}</li>
-        <li class="rating">Rating: ${film.adult}</li>
+        <li class="rating">Rating: ${film.popylarity}</li>
         <li class="releaseDate">Release Date: ${film.release_date}</li>
         </ul>`);
         innerInfoText.insertAdjacentHTML('afterbegin', `<p class="innerTitle">${film.title}</p>`);
@@ -60,19 +62,21 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
 
         poster.addEventListener('click', event => {
             info.style.display = 'block';
+            infoBlur.style.display = 'block';
         });
 
         backToList.addEventListener('click', event => {
             info.style.display = 'none';
+            infoBlur.style.display = 'none';
         })
 
         innerInfo.append(infoPoster);
         innerInfo.append(innerInfoText);
-        info.append(backToList);
-        info.append(innerInfo);
+        infoBlur.append(backToList);
+        infoBlur.append(innerInfo);
         main.append(info);
+        main.append(infoBlur);
         main.append(poster);
-        console.log(film);
     }
 
 })();
