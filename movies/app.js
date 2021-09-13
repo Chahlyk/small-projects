@@ -27,7 +27,7 @@ let url = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff
         innerInfoText.insertAdjacentHTML('afterbegin', `<p class="overview">${film.overview}</p>`);
         innerInfoText.insertAdjacentHTML('afterbegin', `<ul class="ul">
         <li class="vote">Score: ${film.vote_average}</li>
-        <li class="rating">Rating: ${film.popylarity}</li>
+        <li class="rating">Rating: {{movie.adult ? 'R' : 'PG'}}</li>
         <li class="releaseDate">Release Date: ${film.release_date}</li>
         </ul>`);
         innerInfoText.insertAdjacentHTML('afterbegin', `<p class="innerTitle">${film.title}</p>`);
